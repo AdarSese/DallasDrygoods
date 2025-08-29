@@ -6,7 +6,7 @@ import inventory
 import checkInv
 import botherDalla
 import buyItem
-
+import toDO
 print("\n")
 print("-----Welcome to the Dalla's Drygoods.-----")
 print("If it's fancy shoes and perfumes you are looking for, you are lost.")
@@ -132,6 +132,11 @@ def entering2():
         elif choice == "E":
             print("Hmph… all that chatter and not a single coin spent.")
             break
+        elif choice == "TODO":
+            print("You have entered the secret realm where Dalla does not exist. Here you can update to do list.")
+            toDO.todo()
+            panelRepeat()
+            break
         else: 
             wrong_count += 1
 
@@ -143,6 +148,7 @@ def entering2():
 
 def panelRepeat():
     global menuCharInput
+    print()
     menuCharInput = input("Tell me what you wish to do. You can [C]heck your inventory, [B]uy stuff, you can b[O]ther me about items, or you can [E]xit if your wallet is empty!").upper()
     entering2()
 
