@@ -1,9 +1,11 @@
 
 list_of_things_to_do = ["Make a ToDo List system where you can add stuff in it ", "aa"] 
-#buying "a" or other things result in a random buy. Fix it
-#not a single coin spent fix
-#money is not functional 
 
+#not a single coin spent fix. 
+    # if spent 30 - 60 gold, do okay words at the exit, 
+    # if spent more than 100 gold, do oay okay words at the exit
+#money is not functional 
+#buying "a" or other things result in a random buy. Fix it
 
 def addTodo():
     addedElement = input("What element do you wish to add: ")

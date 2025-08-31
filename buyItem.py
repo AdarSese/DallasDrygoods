@@ -8,10 +8,17 @@ import inventory
 #.pop(1)
 
 def transfer():
+        global spent_gold
+        global cost_of_bought_Item
+        global trueboughtitemname
+        cost_of_bought_Item = inventory.dallaInv[idItem].price
+        trueboughtitemname = inventory.dallaInv[idItem].name
+        gold.owned_gold =  gold.owned_gold - cost_of_bought_Item
+        
         item = inventory.dallaInv.pop(idItem)
         inventory.characterInv.append(item)  # DIFFERENCE BETWEEN APPEND AND POP! Now i understand it. Its a simple reason.
-    
-
+        
+        
 
 
 
@@ -34,11 +41,22 @@ def buy():
         for i in range(0,len(inventory.dallaInv)):
                 if boughtItem == inventory.dallaInv[i].name:
                         idItem = i
+                        print(f"idItem is: {idItem}")
+                        print(f"Your gold was: {gold.owned_gold}")
+                        transfer()
+                        print(f"idItem is: {idItem}")
+                        print(f"true bough item name: {trueboughtitemname}")
+                        print(f"cost of bought item is: {cost_of_bought_Item}")
+                       
+                        print(f"now your gold is: {gold.owned_gold}")
+                        
+
+
                         break
                 # if i == False:
                 #     print("there is no such item")
                 #     break
-        transfer()
+        
         # THIS CODE REVEALS A HIDDEN BuG print(f"Hmm..{inventory.dallaInv[idItem].name}, it wortheth {inventory.dallaInv[idItem].price} gold")
         print("\n")
         print("Now your inventory is: ")
