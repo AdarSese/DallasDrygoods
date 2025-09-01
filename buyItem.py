@@ -6,11 +6,12 @@ import inventory
 #we want to buy items into our inventory. Erase the item from dalla's inventory and append() it into our own
 #Optional: Shuffle the shop item list
 #.pop(1)
-
+total_spent = 0
 def transfer():
         global spent_gold
         global cost_of_bought_Item
         global trueboughtitemname
+        global total_spent
         cost_of_bought_Item = inventory.dallaInv[idItem].price
         trueboughtitemname = inventory.dallaInv[idItem].name
         gold.owned_gold =  gold.owned_gold - cost_of_bought_Item
@@ -18,6 +19,7 @@ def transfer():
         item = inventory.dallaInv.pop(idItem)
         inventory.characterInv.append(item)  # DIFFERENCE BETWEEN APPEND AND POP! Now i understand it. Its a simple reason.
         
+        total_spent = total_spent + cost_of_bought_Item
         
 
 
@@ -49,6 +51,7 @@ def buy():
                         print(f"cost of bought item is: {cost_of_bought_Item}")
                        
                         print(f"now your gold is: {gold.owned_gold}")
+                        print(f"Total money spent is: {total_spent}")
                         
 
 

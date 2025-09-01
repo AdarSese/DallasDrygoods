@@ -130,7 +130,16 @@ def entering2():
             panelRepeat()
             break 
         elif choice == "E":
-            print("Hmph… all that chatter and not a single coin spent.")
+            if buyItem.total_spent == 0:
+                print("Hmph… all that chatter and not a single coin spent.")
+
+            elif buyItem.total_spent >= 100:
+                print("Have a great day mister!")
+            
+            elif buyItem.total_spent >= 30:
+                print("Alright. Have a good day.")
+            
+            
             break
         elif choice == "TODO":
             print("You have entered the secret realm where Dalla does not exist. Here you can update to do list.")
