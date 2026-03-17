@@ -1,0 +1,22 @@
+import xml.etree.ElementTree as ET
+
+def xml_to_srt(xml_file, srt_file):
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+
+    # Try to handle namespaces (like in TTML or DFXP)
+    namespace = ''
+    if root.tag.startswith('{'):
+        namespace = root.tag.split('}')[0] + '}'
+
+    entries = root.findall(f'.//{namespace}p')
+
+    with open(srt_file, 'w', encoding='utf-8') as f:
+        for i, p in enumerate(entries, start=1):
+            begin = p.attrib.get('begin', '0:00:00.000').replace('.', ',')
+            end = p.attrib.get('end', '').replace('.', ',')
+            text = ''.join(p.itertext()).strip()
+
+            f.write(f"{i}\n{begin} --> {end}\n{text}\n\n")
+
+xml_to_srt("subtitles.xml", "output.srt")
